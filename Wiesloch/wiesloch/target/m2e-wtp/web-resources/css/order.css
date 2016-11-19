@@ -1,0 +1,58 @@
+@charset "utf-8";
+ 
+  *{ margin: 0px;
+     padding: 0px;}
+  .box{ width: 96%;
+        margin: 0 auto;
+        color: #666;
+        margin-top: 60px;}
+  .list{ width: 90%;
+         padding: 5%;
+         margin-top: 20px;
+         border:1px solid #ccc;
+         border-radius: 5px;}
+  .state{ width: 100%;
+          height: auto;}
+  .sLeft{ width: 80%;
+          height: 80px;
+          float: left;
+         }
+  .sRight{ width: 20%;
+           height: 80px;
+           line-height: 60px;
+           float: left;
+        }
+  .sta1{ width: 35%;
+         line-height: 20px;
+         }
+   .sta2{ width: 35%;
+         line-height: 20px;
+         color: #333;
+         }
+    hr{ color: #ccc;
+        width: 100%;
+        clear: both;
+       }
+    .good{ width: 100%;
+           height: 60px;
+           padding:10px 0;}
+    .gLeft{ width: 30%;
+            float: left;}
+    .gLeft img{ width: 100%;
+                height: 80px;}
+    .gMain{ width: 45%;
+            padding-left: 5px;
+            float: left;}
+    .gRight{width: 20%;
+            padding-top: 20px;
+            float: left;}
+    .gRight p{ text-align: right;}
+    .color1{ color: red;}
+    .color2{ color: red; font-size: 20px;
+             line-height: 40px;}
+    .count{ width: 100%;
+            margin-top: 30px;
+            clear: both;
+            border-top:1px solid #ccc;}
+    a{ color: #333;
+       text-decoration: none;}

@@ -1,0 +1,35 @@
+package colorTicket;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
+
+public class startListener implements ActionListener{
+	private   JButton jba[]=new JButton[33];
+	private   JTextArea jta;
+	private   JButton stop;
+	private   JPanel jpPanel;
+	public startListener(JButton jButton[],JTextArea jta,JButton stop,JPanel jp) {
+		// TODO Auto-generated constructor stub
+		jba=jButton;
+		this.jta=jta;
+		this.stop=stop;
+		jpPanel=jp;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		startThread startThread1=new startThread(jba,jpPanel , jta);
+		JButton jButton=(JButton)e.getSource();
+		jButton.setEnabled(false);
+		stop.setEnabled(true);
+		
+		stop.addActionListener(new endListener(jButton, jpPanel, jba, jta,startThread1));
+		startThread1.start();
+	}
+}

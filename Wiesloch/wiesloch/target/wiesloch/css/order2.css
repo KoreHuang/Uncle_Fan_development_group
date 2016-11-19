@@ -1,0 +1,35 @@
+
+    *{ margin: 0px;
+       padding: 0px;
+       font-size: 14px;
+       line-height: 25px;
+       }
+     hr{ margin: 5px 0;}
+    .title{ font-size: 16px;line-height: 40px;}
+    .main{ width: 90%;
+           height: auto;
+          margin: 20px auto;
+          
+        }
+    .comm{ width: 100%;
+            height: auto;
+            padding: 20px;
+            margin: 10px 0 ;
+            border: 1px solid #ccc;}
+     #sel{ width: 100%;
+           height: 35px;
+           margin-top: 20px;}
+  
+    .cLeft{ width: 70%;
+           float: left;}
+    .cEight{ width: 30%;
+             text-align: right;
+             float: right;}
+     .return{ width: 30%;
+              height: 40px;
+              background: green;
+              border: 0;
+             }
+    .ret{ width: 100%;
+          padding-left: 35%;
+          margin: 0 auto;}

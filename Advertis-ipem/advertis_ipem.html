@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IPEM心理健康数字商店</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	window.onload = function(){
+		var controUl = document.getElementById("controTag");
+		var lis = controUl.children;
+		console.log(lis);
+		var cloudServiceIndex = document.getElementById("main").offsetHeight;
+		var card_index = document.getElementById("cloud_services").offsetHeight+cloudServiceIndex;
+		var online_pay_index = document.getElementById("card_all").offsetHeight+card_index;
+		var consultant_index = document.getElementById("online_pay").offsetHeight+online_pay_index;
+		var hospatal_index = document.getElementById("consultant_all").offsetHeight+consultant_index;
+		var intervene_index = document.getElementById("hospatal_all").offsetHeight+hospatal_index;
+		var cloudService = lis[0].getElementsByTagName("a");
+		cloudService[0].onclick = function(){
+			windowMove(cloudServiceIndex-cloudServiceIndex);
+		}
+		var card = lis[1].getElementsByTagName("a");
+		card[0].onclick = function(){
+			windowMove(card_index-cloudServiceIndex);
+		}
+		var online_pay=lis[2].getElementsByTagName("a");
+		online_pay[0].onclick=function(){
+			windowMove(online_pay_index-cloudServiceIndex);
+		}
+		var consultant = lis[3].getElementsByTagName("a");
+		consultant[0].onclick=function(){
+			windowMove(consultant_index-cloudServiceIndex);
+		}
+		var hospatal = lis[4].getElementsByTagName("a");
+		hospatal[0].onclick=function(){
+			windowMove(hospatal_index-cloudServiceIndex);
+		}
+		var intervene = lis[5].getElementsByTagName("a"); 
+		intervene[0].onclick=function(){
+			windowMove(intervene_index);
+		}
+
+		var timer = null;
+		var endIndex = document.getElementById("advertis_all").offsetHeight;
+		function windowMove(target){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var top = window.pageYOffset;
+				var speed = (target-top)/7;
+				speed = speed>0?Math.ceil(speed):Math.floor(speed);
+				if(top == target||top==endIndex){
+					clearInterval(timer);
+				}
+				window.scrollTo(0,top+speed);
+			},20);
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div class="advertis_all" id="advertis_all">
+		<div class="mune_index" id="main">
+			<div class="mune">
+				<a class="logo"><img src="images/logo.png" /></a>
+				<ul id="controTag">
+					<li class="mune_active"><a>云服务</a></li>
+					<li><a>“卡”特色</a></li>
+					<li><a>即时收益</a></li>
+					<li><a>高回报</a></li>
+					<li><a>专业性</a></li>
+					<li><a>干预创新</a></li>
+					<div class="clr"></div>
+				</ul>
+				<div class="clr"></div>
+			</div>
+		</div><!--mune_index-->
+		<div class="advertis_content" id="div_content">
+			<div class="cloud_services" id="cloud_services" >
+				<div class="cloud_services_img">
+					<div class="cloud_services_text">
+						<p>只要您的PC、Mobile、PAD处于网络环境，即可享用服务</p>
+						<p>先进的技术架构，让您的操作更快、更简单、更高效</p>
+					</div>
+				</div>
+			</div><!--cloud_services-->
+			<div class="card_all" id="card_all">
+				<div class="card_index">
+					<div class="card_text">
+						<h1>知名专家制定常用的心理服务套餐</h1>
+						<p>您也可以自由定义“卡”与套餐</p>
+						<p>强大的心理量表库，“应有尽有”</p>
+						<ul>
+							<li>心理健康</li>
+							<li>人格测试</li>
+							<li>情绪状态</li>
+							<li>青少年</li>
+							<li>婚姻家庭</li>
+							<li>职业测试</li>
+							<li>中医健康</li>
+							<li>... ...</li>
+							<div class="clr"></div>					
+						</ul>
+					</div>
+				</div>
+			</div><!--card_all-->
+			<div class="online_pay" id="online_pay">
+				<div class="online_pay_content">
+					<div class="card_text online_pay_text">
+						<h1>网上在线支付，即时到账</h1>
+						<p>支持国内20余家银行网上支付</p>
+						<p>可动态管理交易和支付记录</p>
+					</div>
+				</div>
+			</div><!--online_pay-->
+			<div class="consultant_all" id="consultant_all">
+				<div class="consultant_index">
+					<div class="card_text consultant_text">
+						<h1>零风险</h1>
+						<p class="consultant_text_itay">最低<span>500</span>张卡起售，无上限</p>
+						<p class="consultant_text_itay"><span>5</span>倍收益率等着您</p>
+						<p>强大的技术支持体系，让您后顾无忧</p>
+					</div>
+				</div>
+			</div><!--consultant_all-->
+			<div class="hospatal_all" id="hospatal_all">
+				<div class="hospatal_content">
+					<div class="card_text hospatal_text">
+						<h1>十年磨一剑，只为一“专”字</h1>
+						<p>百余家国内知名三甲医院使用客户</p>
+						<p>产品经过国内心理学专家认定</p>
+						<p>中华健康促进基金会指定合作产品</p>
+					</div>
+				</div>
+			</div><!--online_pay-->
+			<div class="intervene_all" >
+				<div class="intervene_index">
+					<div class="card_text intervene_text">
+						<h1>多维多级心理健康促进干预系列</h1>
+						<ul>
+							<li>
+								<span>
+									<img src="images/music_icon.png" />
+								</span>
+								<p>音乐治疗</p>
+							</li>
+							<li>
+								<span class="magazine_span">
+									<img src="images/magazine_icon.png" />
+								</span>
+								<p>电子期刊</p>
+							</li>
+							<li>
+								<span class="magazine_span">
+									<img src="images/vedio_icon.png" />
+								</span>
+								<p>心理视频</p>
+							</li>
+							<li>
+								<span>
+									<img src="images/animate_icon.png" />
+								</span>
+								<p>心理动漫</p>
+							</li>
+							<li>
+								<span>
+									<img src="images/game_icon.png" />
+								</span>
+								<p>心理游戏</p>
+							</li>
+							<li class="intervene_more">
+								... ...
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div><!--card_all-->
+		</div><!--advertis_content-->
+		<div class="foot">
+			<div class="foot_content">
+				<div class="foot_menu_content">
+					<a href="#">关于我们</a>|
+					<a href="#">免责声明</a>|
+					<a href="#">隐私保护</a>|
+					<a href="#">联系我们</a>|
+					<a href="#">意见箱</a>
+				</div>
+				<p>2013 中盛凯新企业集团  陕ICP备12006302号-5 </p>
+			</div>
+		</div><!--foot-->
+				
+	</div>
+</body>
+</html>

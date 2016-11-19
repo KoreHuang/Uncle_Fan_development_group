@@ -1,0 +1,78 @@
+@charset "utf-8";
+@charset "utf-8";
+body{color:#626365;background-color: #FFFFFF;}
+a{color:#626365;}
+.select li i.on{background: url("../images/orderIcon.png") no-repeat;}
+.addBonus .text .error i{background: url("../images/loginIcon.png") no-repeat;}
+section{margin-top:40px;}
+.btn{width:100%;max-width:300px;height: 34px;line-height:34px;display:block;margin:20px auto;text-align: center;background: #DE4B45;border-radius: 5px;color: #FFFFFF;font-size: 16px;/*clear:both;*/}
+.select li i{width: 20px;height: 20px; display:block;float:left;border:1px solid #D8D8D8;border-radius: 50px; margin:5px;}
+.select li i.on{background-position: -600px 5px;}
+.btn.use{clear:both;}
+/*浼樻儬鍒告牱寮廱egin*/
+@media(max-width: 640px){
+    .bonus{width: 100%;}
+    .bonus ul{width: 300px;margin:0 auto;}
+    .bonusList .ticket{margin-bottom: 10px;}}
+@media(min-width: 641px) {
+    .bonus{width: 620px;}
+    .bonusList .ticket{margin: 0 4px 10px;}}
+.bonus{margin:40px auto;box-sizing:content-box;padding:20px 0;}
+.bonusList .ticket{width: 300px;height: 80px;padding: 7px 0px;background-color: #ffffff;border: 1px solid #DEDEDE;display:block;float:left;overflow: hidden;position:relative;}
+.bonusList li i{margin:29px 0 0 10px;}
+.ticket .money{width: 110px;padding:0 10px;height:70px;margin-top:5px;overflow: hidden;float: left;border-right: 1px solid #D3D3D3;color: #E74F41;text-align: center;box-sizing:border-box;}
+.ticket img{width:70px;height:70px;position:absolute;top:5px;right:5px;}
+.money .num{font-size: 24px;margin-top:5px;}
+.money .range{margin-bottom: 10px;}
+.ticket .limit{width:140px;height:70px;float: left;text-align: left;margin:5px 0 0 7px;}
+.limit .type{height: 34px;line-height: 1.2em;margin-top: 10px;overflow:hidden;}
+.limit .date{margin-bottom: 10px;font-size:12px;}
+.bonus .page{width:100%;text-align:right;}
+.bonus .page span{display:inline-block;margin:0 10px;}
+.bonus .page span i{font-style:normal;}
+/*浣跨敤浼樻儬鍒稿脊绐梑egin*/
+.useMask{width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: #000;opacity: 0.5;z-index: 999;display: none;}
+.useTip{width: 230px;height: 100px; background-color: #000;opacity: 0.7;border-radius: 5px;color: #fff;position: fixed;top: 50%;left: 50%;margin: -50px 0 0 -115px;z-index: 1000;display: none;}
+.useTip .tips{height: 63px;line-height: 63px;border-bottom: 1px solid #6e6e6e;text-align: center;}
+.useTip .confirm{width: 230px;height: 36px;line-height:36px;display: inline-block;border-radius: 0;color:#fff;text-align: center;}
+/*浣跨敤浼樻儬鍒稿脊绐梑egin*/
+/*浼樻儬鍒告牱寮廵nd*/
+/*棰嗙孩鍖卋egin*/
+.mask{width: 100%;min-height: 100%;background-color: #000;opacity: 0.6;position: absolute;top:0;left:0;display: none;}
+.tip{width: 50%;height: 165px;position: fixed;left: 50%;top: 50%;margin: -100px 0 0 -25%;background-color: #fff;border-radius: 5px;font-size: 16px;display: none;}
+@media (min-width:480px) {.tip{width: 260px;margin: 0 auto;margin: -100px 0 0 -130px;}}
+.tip .close{height: 40px;line-height: 40px;background-color: #DE4B45;border-top-left-radius: 4px;border-top-right-radius: 4px;color: #fff;padding-left:15px;}
+.tip .text p{height: 60px;line-height: 60px;text-align: center;color: #000;}
+.tip .text .btn{width: 80px;margin: 0 auto;}
+/*棰嗙孩鍖卐nd*/
+/*鎴戠殑浼樻儬鍒竍egin*/
+@media(max-width: 640px){.tabBar{width: 300px;margin:0 auto;}}
+.tabBar .tab{width:25%;height:45px;line-height:45px;text-align: center;float: left;overflow: hidden;}
+.tabBar .tab p{height:30px;line-height:40px;}
+.tabBar .tab.on p{color:#de4b46;}
+.tabBar .tab.on span{display: block;}
+.tabBar .tab span{width:45px;height: 2px;background-color:#de4b46;margin:0 auto;}
+.myBonus{padding:0;}
+.myBonus .ticket .money{width:125px;}
+.myBonus .ticket .limit{width:160px;}
+.myBonus .button{width:300px;height: auto;margin:0 auto;overflow: hidden;clear: both;}
+.myBonus .btn{width:140px;float:left;}
+.myBonus .get{margin-right:10px;}
+.bonusEmpty{padding-top:30px;}
+.bonusEmpty span{width:80px;height:80px;display: block;margin:0 auto;background-position:0 0;background:url(../images/usercenter/bonusEmpty.png) no-repeat;background-size:100%;}
+.bonusEmpty .tips{margin:20px auto;text-align:center;color: #999;}
+.bonusEmpty .jump{display: block;width: 300px;margin:0 auto;height: 34px;margin-bottom: 30px;background-color:#de4b46;font-size: 16px;color: #fff;line-height: 34px;text-align: center;border-radius: 5px;}
+.content2,.content3,.content4{display:none;}
+.content3 .ticket .money,.content3 .ticket .limit,.content4 .ticket .money,.content4 .ticket .limit{color:#999;}
+
+.addBonus{max-width:768px;margin:40px auto 0;padding-top:10px;}
+.addBonus .text{width:94%;margin:0 auto;position: relative;}
+.addBonus .text p{height:30px;line-height:30px;}
+.addBonus .text input{width:100%;height:40px;line-height:40px;padding-left:10px;border:1px solid #ccc;border-radius:3px;position:relative;box-sizing:border-box;}
+.addBonus .text .error{height:20px;line-height:20px;position: absolute;top:70px;right: 0;color: #de4943;display:none;}
+.addBonus .text .error i{width:15px;height:15px;display:block;float:left;margin:2px 5px 0 0;background-position:-202px -34px;}
+/*娣诲姞鎴愬姛寮圭獥begin*/
+.addTip{width: 230px;height: 100px; background-color: #000;opacity: 0.7;border-radius: 5px;color: #fff;position: fixed;top: 50%;left: 50%;margin: -50px 0 0 -115px;z-index: 1000;display: none;}
+.addTip .tips{height: 63px;line-height: 63px;border-bottom: 1px solid #6e6e6e;text-align: center;}
+.addTip a{width:230px;height:36px;line-height:36px;display: inline-block;float: left;border-radius: 0;color:#fff;text-align: center;}
+

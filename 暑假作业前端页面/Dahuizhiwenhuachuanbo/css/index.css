@@ -1,0 +1,67 @@
+*{padding: 0px; margin: 0px;}
+
+.top{width: 100%;}
+.top_content{width: 990px;margin: 0px auto;padding-top: 30px; padding-bottom:25px ;}
+.top_content img{display: inline-block;border: none;}
+
+.navigator{padding-top: 30px;  float: right;}
+
+.clearfix{*zoom:1;}
+.clearfix:after,.clearfix:before{content:"";display: table;}
+.clearfix:after{clear: both;}
+
+.menulist{list-style: none;  border-bottom:1px solid #f0eced ;}
+.menulist li{ float: left;}
+.menulist li a{text-decoration: none; display: block; padding: 0 0 0 40px;}
+.menulist li a.first_page{padding-left: 0px;}
+.menulist li a span{font-family: "微软雅黑"; font-size: 14px;border-bottom:4px solid #ffffff ;padding-bottom: 5px;display: block;color: #333333;}
+.menulist li a span:hover{color:#bb0200; border-bottom:3px solid #bb0200;} 
+
+.focus_imgs{width:100%;background-color:#9f3c38;}
+.focus_imgs1{width:100%;background-color:#6a71a5;}
+.focus_imgs2{width:100%;background-color:#9f3c38;}
+.focus_imgs3{width:100%;background-color:#796aa5;}
+.focus_imgs4{width:100%;background-color:#538ab3;}
+.imgposition{width: 990px;height:410px;margin: 0 auto;position: relative;}
+.imgposition img{position: absolute;border: none;margin: 0 auto;}
+.cir_slider{position: absolute;top: 50%;z-index: 20;left: 50%;margin-left: 360px;margin-top: 150px; }
+.cir_slider span{border-radius:5px; background-color: white; width: 10px; height: 10px;display: inline-block;margin-left:10px;opacity: 0.6;}
+.cir_slider span:hover{opacity:1;cursor: pointer;}
+
+.main_content{width: 100%; padding-top: 10px;background-color: #ffffff;}
+
+.hobelist{padding-top: 25px;width: 990px; margin: 0 auto;}
+.menutow{list-style: none;display: block;border-bottom: 1px solid #8b0402;}
+.menutow li{float: left;margin-right:5px ;}
+.menutow li a img{padding-bottom:3px ;padding-top: 2px;border: none;  margin: 0 auto;} 
+.menutow li a{width: 150px;height:119px;padding-top:31px;text-align:center;text-decoration: none;display: block;background-color:#b5b5b5 ;font: "微软雅黑";color: white;}
+.menutow li a:hover{background-color:#8b0402 ;}
+
+.cmp_infod{width: 990px;margin:0 auto;padding-bottom: 3px;padding-top: 25px;border-bottom: 1px dashed #b2b2b2;}
+.cmp_infop{font-size: 14px;	font-family: "微软雅黑";line-height: 23px;color: #827b84;}
+.cmp_infop a{color: #827b84;text-decoration: none;}
+.tit{display: inline-block;background-color: #860c00;width: 14px;height: 14px;}
+
+.who{width: 990px;margin: 0 auto;padding-top: 20px;height: 177px;}
+.who h1{height: 18px;font-size: 18px;color: #8B0402;}
+.who h2{height: 14px;margin-bottom: 15px; font-size: 14px;}
+.who p{font-size: 13px;line-height: 22px;font-family:"微软雅黑";margin-bottom: 10px;color: #666666;}
+
+.team{width:990px;margin: 0 auto; padding: 20px 0px 45px 0px;height: 415px; }
+.team h1{height: 18px;font-size: 18px;color: #8B0402;}
+.team h2{height: 14px;font-size: 14px;margin-bottom: 15px;}
+.info{display: block;}
+.info li{ width: 195px;height: 368px;float: left;background-color: #d3d3d3;list-style: none;margin-right: 18px;position: relative;}
+.txt{position: absolute; top: 245px;padding: 0 15px;width: 165px;}
+.txt span{display: block;line-height: 22px;font-size: 15px;float: right;font-family: "微软雅黑";color: #333333;}
+.txt .sec{position: absolute;right: 15px;font-size: 12px;}
+.txt p{padding-top: 8px; font-size: 12px;line-height: 18px;     font-family: "微软雅黑"; color: #666666;}
+.tail_bor{width: 100%;border-top:3px solid #832625;; background-color: #efefef;}
+.cap{width: 990px;margin: 0 auto;padding: 20px 0px 35px 0px;}
+.left{border-right: 1px solid #cbcbcb;float:left;padding-top: 15px;padding-right:30px ;}
+.mid{padding: 10px 0px 10px 30px;float: left;width: 490px;border-right: 1px solid #cbcbcb;border-left: 1px solid #FFFFFF;position: relative;}
+.mid h3{font-size: 14px;color: #333333;font-family: "微软雅黑"; line-height: 26px;font-weight: normal;margin-bottom: 15px;}
+.mid img{display: block;border: none; float: left;margin-bottom: 10px;}
+.mid span{width:218px; display: block;font-size: 12px;color: #333333;font-family: "微软雅黑";float: left;margin-bottom: 10px;float: left;padding-left: 5px;}
+.right{padding: 10px 0px 10px 30px;float: left;width: 290px;border-left: 1px solid #FFFFFF; font-size:12px ; line-height:22px ;color: #666666;font-family: "宋体";}
+.mid p{font-size: 12px;color: #333333;font-family: "微软雅黑";line-height: 26px;position: absolute;left: 30px;top: 106px;}

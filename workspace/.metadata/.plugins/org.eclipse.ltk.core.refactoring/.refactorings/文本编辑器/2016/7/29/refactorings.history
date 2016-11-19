@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;文本编辑器.OpenButtonListener.actionPerformed().bReader&apos; in &apos;文本编辑器.OpenButtonListener.actionPerformed()&apos; to field&#x0A;- Original project: &apos;文本编辑器&apos;&#x0A;- Original element: &apos;文本编辑器.OpenButtonListener.actionPerformed().bReader&apos;&#x0A;- Field name: &apos;bReader&apos;&#x0A;- Initialize field in method&#x0A;- Declared visibility: &apos;private&apos;" description="Convert local variable &apos;bReader&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;文本编辑器{OpenButtonListener.java" name="bReader" selection="741 30" stamp="1468497577349" static="false" version="1.0" visibility="2"/>
+</session>

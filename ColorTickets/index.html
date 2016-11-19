@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.Tbom{margin: 0 auto;padding-top:300px;text-align: center;}
+			.contblock{text-align: center;}
+			.butt{padding-top:30px;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var start = document.getElementById("start");
+				var end = document.getElementById("end");
+				var imgs = document.getElementsByTagName("img");
+				var RandArray= [];
+				var timer = null;
+				var cnt =0;
+				start.onclick = function(){
+					if(timer!=null){
+						clearInterval(timer);//为防止多按的开始键造成，结束不可控，再每次按开始键之前应先结束之间的开始；
+						timer = null;
+					}
+					timer = setInterval(function(){
+													RandArray = rand();
+													for(var i=0;i<RandArray.length;i++){
+														imgs[i].src ="red/"+(RandArray[i]+1)+".png";
+													}
+													console.log(cnt++);
+													console.log(RandArray);
+												},50);
+				}
+				end.onclick = function(){
+					if(timer!=null){
+						clearInterval(timer);
+						timer = null;
+					}
+						
+				}	
+			}
+			function rand(){
+				var RandArrayIndex = [];
+				var i=0;
+				while(i<6){
+				 		var tmp = parseInt(Math.random()*33);
+				 		var j;
+				 		for(j=0;j<RandArrayIndex.length&&tmp!=RandArrayIndex[j];j++);
+				 		if(j==RandArrayIndex.length){
+				 			RandArrayIndex[i++]=tmp;
+				 		}
+				}
+				return  RandArrayIndex;
+			}
+			
+		</script>	
+	</head>
+	<body>
+		
+		<div class="Tbom">
+			<div class="contblock">
+				<img src="red/1.png"/>
+				<img src="red/2.png"/>
+				<img src="red/3.png"/>
+				<img src="red/4.png"/>
+				<img src="red/5.png"/>
+				<img src="red/6.png"/>
+				<div class="butt">
+					<input type="button" name="start" id="start" value="开始" />
+					<input type="button" name="end" id="end" value="结束" />
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

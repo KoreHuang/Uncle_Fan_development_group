@@ -1,0 +1,25 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import javax.print.attribute.standard.OutputDeviceAssigned;
+
+
+public class TestServer {
+	public static void main(String[] args) {
+		try {
+			ServerSocket serverSocket=new ServerSocket(8989);
+			Socket socket=serverSocket.accept();
+			OutputStream oStream=socket.getOutputStream();
+			oStream.write(1);
+			InputStream iStream=socket.getInputStream();
+			System.out.println("Sever port:"+iStream.read());
+			//System.out.println("hello......it's me.....");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+}

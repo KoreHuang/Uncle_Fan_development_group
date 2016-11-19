@@ -1,0 +1,39 @@
+package colorTicket;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class startListener implements ActionListener{
+	JPanel jp;
+	public startListener(JPanel jPanel) {
+		// TODO Auto-generated constructor stub
+		jp=jPanel;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		try {
+			//showRoll();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	public void showRoll() throws InterruptedException{
+		JButton [] jButton=new JButton[jp.getComponentCount()];
+		for(int i=0;i<jButton.length;i++){
+			jButton[i]=(JButton)jp.getComponent(i);
+		}
+		//while(true){
+			for (int i = 0; i < jButton.length; i++) {
+				jButton[i].setEnabled(true);
+				Thread.sleep(1000);
+				jButton[i].setEnabled(false);
+			}
+		//}
+		
+	}
+}

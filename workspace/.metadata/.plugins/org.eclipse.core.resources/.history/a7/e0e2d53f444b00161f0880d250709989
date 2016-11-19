@@ -1,0 +1,30 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class SendButtonListener implements ActionListener {
+	private JTextArea jta;
+	private JTextField jtf;
+	private String name;
+	public SendButtonListener() {
+		// TODO Auto-generated constructor stub
+	}
+	public SendButtonListener(JTextArea jta,JTextField jtf,String name) {
+		// TODO Auto-generated constructor stub
+		this.jta=jta;
+		this.jtf=jtf;
+		this.name=name;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String sendMsg=name+":";
+		String showMsg="";
+		showMsg=jta.getText();
+		sendMsg+=jtf.getText()+"\r\n";
+		showMsg+=sendMsg;
+		jta.setText(showMsg);
+		jtf.setText("");
+	}
+}

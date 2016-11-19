@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wiesloch.mapper.OrderMapper">
+	
+	<insert id="insertOrder" parameterType="Order" >
+		<selectKey keyProperty="order_id" order="AFTER" resultType="java.lang.Integer">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into wine_order(order_address,order_create_time,order_total_price,order_userId,order_sendUserName,order_sendTelephone) values(#{order_address},#{order_createTime},#{order_totalPrice},#{order_userId},#{order_sendUserName},#{order_sendTelephone}) 
+	</insert>
+</mapper>

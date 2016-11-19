@@ -1,0 +1,42 @@
+package colorTicket;
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class colorTicketFrame extends JFrame{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public colorTicketFrame() {
+		// TODO Auto-generated constructor stub
+		JPanel jp1=new JPanel();
+		JPanel jp2=new JPanel();
+		JButton start=new JButton("开始");
+		JButton end =new JButton("结束");
+		jp2.add(start);
+		jp2.add(end);
+		
+		for (int i = 0; i < 33; i++) {
+			JButton tmp=new JButton(new ImageIcon("red/"+(i+1)+".png"));
+			tmp.setEnabled(false);
+			jp1.add(tmp);
+		}
+		
+		this.add(jp1,BorderLayout.NORTH);
+		this.add(jp2,BorderLayout.SOUTH);
+		this.setVisible(true);
+		this.setSize(500, 200);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("彩票售卖机");
+	}
+	public static void main(String[] args) {
+		new colorTicketFrame();
+	}
+}

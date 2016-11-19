@@ -1,0 +1,24 @@
+package colorTicket;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class startListener implements ActionListener{
+	JPanel jp;
+	public startListener(JPanel jPanel) {
+		// TODO Auto-generated constructor stub
+		jp=jPanel;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void showRoll(){
+		JButton jButton[]=(JButton[])jp.getComponents();
+		
+	}
+}

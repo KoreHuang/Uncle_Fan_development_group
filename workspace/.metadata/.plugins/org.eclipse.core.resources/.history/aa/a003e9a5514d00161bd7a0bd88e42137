@@ -1,0 +1,62 @@
+package colorTicket;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import javax.swing.JTextArea;
+
+public class startListener extends Thread implements ActionListener{
+	private  JPanel jp;
+	private JButton end;
+	private startListener myStartListener;
+	private JTextArea jTextArea;
+	public startListener(JPanel jPanel,JTextArea jTextArea,JButton end) {
+		// TODO Auto-generated constructor stub
+		jp=jPanel;
+		this.jTextArea=jTextArea; 
+		this.end=end;
+	}
+	void setThread(startListener s){
+		myStartListener=s;
+	}
+	@Override
+	public void run() {
+		if(!this.isInterrupted()){
+			try {
+				String mString="距离结束还有";
+				int cnt=20;
+				jTextArea.setText(mString+cnt+"秒");
+				while (cnt>=0) {
+					for (int i = 0; i < 33; i++) {
+						JButton jButton=(JButton)jp.getComponent(i);
+						jButton.setEnabled(true);
+						jp.repaint();
+						Thread.sleep(60);
+						jButton.setEnabled(false);
+						jp.repaint();
+					}
+					cnt--;
+					jTextArea.setText(mString+cnt+"秒");
+				}
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("异常中断");
+				this.interrupt();
+			}
+		}
+	};
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		JButton jButton=(JButton)e.getSource();
+		jButton.setEnabled(false);
+		myStartListener.start();
+		end.setEnabled(true);
+		
+	}
+	
+}

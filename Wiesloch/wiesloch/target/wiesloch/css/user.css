@@ -1,0 +1,114 @@
+@charset "utf-8";
+body{color:#626365;}
+a{color:#626365;}
+.tip i{background: url() no-repeat;}
+.userPhoto .mask{background: url() no-repeat;}
+.order{background: url() repeat;}
+.order .orderStatus .line{background: url() no-repeat;}
+.collectList li .choose{background: url() no-repeat;}
+.walletEmpty span{background: url() no-repeat;background-size:100%;}
+.exchangeCode,.card{max-width: 768px;margin: 40px auto 0;padding-top: 15px;}
+.userCenter,.walletFrame{max-width: 768px;margin: 40px auto 0;}
+/*鐢ㄦ埛涓績begin*/
+.userInfo{position: relative;color: #000;}
+.userInfo .bg{width: 100%;z-index: -5;}
+.userInfo .userDetail{width:100%;position: absolute;top: 12%;left: 0;}
+.userDetail .userPhoto{width: 22%;margin:0 15px 0 5%;float: left;}
+.userPhoto .mask{width: 22.2%;height: 110%;position: absolute;top: 0;left:5%;background-size: 100%;z-index: 2;}
+.userDetail .info{float: left;margin-top: 6%;}
+.info .userName{font-weight: bold;color: #fa281b;}
+@media (min-width: 480px) and (max-width:640px){
+    .userDetail .info{margin-top:7%;}
+    .info p,.order p,.orderStatus a{font-size: 16px;}
+}
+@media (min-width: 640px){
+    .userDetail .info{margin-top:7%;}
+    .info p,.order p,.orderStatus a{font-size: 20px;}
+}
+.userPhoto img{width: 90%;margin:5% 0 0 8%;}
+.order{width:100%;height:32%;position: absolute;bottom: 0;left: 0;color: #171516;}
+.order .grade{width: 18%;height:82%;text-align:center;color:#fff;margin-left:7.5%;padding-top:2%;float:left;background: url() no-repeat;background-size: 100%;}
+.order .orderStatus{width:70%;height:100%;float: right;position: relative;}
+.order .orderStatus a{width: 25%;height:100%;float: left;color: #000;cursor: pointer;display:block;}
+.orderStatus a strong,.orderStatus a span{width: 100%;height: 35%;box-sizing:border-box;display: block;text-align: center;}
+@media (max-width: 480px) {
+	.order .grade{font-size:12px;}
+    .orderStatus a strong,.orderStatus a span{line-height:30px;}
+    .order .orderStatus .line{top:10%;}
+}
+@media (min-width: 480px) and (max-width: 640px) {
+    .orderStatus a strong,.orderStatus a span{line-height:45px;}
+    .order .orderStatus .line{top:25%;}
+}
+@media (min-width: 640px) {
+    .orderStatus a strong,.orderStatus a span{line-height:60px;}
+    .order .orderStatus .line{top:32%;}
+}
+.order .orderStatus .line{width: 2px;height: 32px;display:block;position:absolute;background-position: -10px -6px;}
+.orderStatus .line1{left: 25%;}
+.orderStatus .line2{left: 50%;}
+.orderStatus .line3{left: 75%;}
+.contentFrame .list{padding-top: 20px;}
+.contentFrame .list li{width:33.3%;height:auto;margin-bottom:20px;padding:0 5%;float: left;box-sizing: border-box;}
+@media (min-width: 480px) {.contentFrame .list li{width:25%;padding:0 4%;}}
+.contentFrame .list li a{display:block;}
+.list li img{width: 100%;margin-bottom: 5px;}
+.list li span{width:100%;height:auto;text-align:center;display: block;}
+
+/*鐢ㄦ埛涓績end*/
+/*鍟嗗搧鍏戞崲鐮�&绀煎搧鍗″叕鍏眀egin*/
+.content{width:96%;margin: 20px auto 0;}
+.dhm input,.yzm input,.number input,.password input{height: 40px;line-height: 40px;float: left;box-sizing: border-box;}
+.dhm span,.yzm span,.number span,.password span{width: 93%;height: auto;position: absolute;left: 15px;top: 10px;}
+.tip{color: #de4943;position: absolute;top: 40px;right: 0;display: none;}
+.tip i{width:15px;height:15px;display:block;float:left;margin: 3px 5px 0 0;background-position:-202px -34px;}
+.btn{width:100%;max-width:300px;height: 34px;line-height:34px;display:block;clear:both;margin:30px auto;margin-bottom:0px;text-align: center;background: #DE4B45;border-radius: 5px;color: #FFFFFF;font-size: 16px;}
+/*鍟嗗搧鍏戞崲鐮�&绀煎搧鍗″叕鍏眅nd*/
+/*鍟嗗搧鍏戞崲鐮乥egin*/
+.dhm,.yzm{height: 40px;margin-bottom: 30px;position: relative;}
+.yzm{width: 65%;float: left;}
+.dhm input,.yzm input{width: 100%;border: 1px solid #cccccc;border-radius: 3px;padding-left: 15px;}
+.yzmImg{float: right;padding: 5px 0;}
+/*鍟嗗搧鍏戞崲鐮乪nd*/
+/*绀煎搧鍗egin*/
+.card .content{margin-top: 5px;}
+.number,.password{height:78px;position: relative;}
+.number h2,.password h2{height: 20px;line-height: 20px;margin-bottom: 5px;color: #252525;}
+.number input,.password input{width:100%;height: 35px;line-height: 35px;border: 1px solid #cccccc;border-radius: 3px;padding-left: 15px;}
+.password input{width:22%;}
+.password strike{height: 35px;line-height: 35px;padding: 0 3px;float: left;}
+.number .tip,.password .tip{top:60px;}
+.card .btn{margin: 20px auto 30px;}
+.detail{display: none;}
+.detail p{height: 35px;line-height: 35px;margin-bottom:10px;background-color: #e8e8e8;padding-left: 10px;}
+/*绀煎搧鍗nd*/
+/*鎴戠殑閽卞寘begin*/
+.walletFrame .tabBar{background-color: #f2f2f2;border-bottom: 1px solid #a2a2a2;width: 100%;height: 44px;line-height: 44px;}
+.tabBar a{color: #333;}
+.tabBar .tab{width: 33%;height: 44px;float: left;display: inline-block;text-align: center;overflow: hidden;font-size: 15px;}
+.tabBar .tab.tab3{width: 34%;}
+.tab span{width: 60px;height:21px;line-height:24px;text-align:center;display:block;margin: 0 auto;}
+.tab span.line{height: 2px;background-color: #ab0e09;display: none;}
+.tabBar .tab.on{color: #ab0e09;}
+.tabBar .tab.on span{display: block;}
+.walletFrame .content{width: 94%;margin: 0 auto;}
+.walletFrame .content2,.walletFrame .content3{display: none;}
+.content .total{height: 90px;line-height: 90px;text-align: center;}
+.content .total strong{font-size: 20px;color: #323232;}
+.content .detailed p{font-size: 15px;}
+.content table{width:100%;border: 1px solid #d2d2d2;table-layout : fixed ;}
+.content table tr{height: 30px;line-height: 30px;text-align: center;border-bottom: 1px solid #d2d2d2;font-size:14px;}
+.content table tr th{font-weight: normal;}
+.content table tr td{font-size:14px;}
+.content table tr td:last-child{line-height:20px;text-align: left;word-break: break-all;word-wrap: break-word;}
+.add{color:green;}
+.reduce{color:red;}
+.detailed .page{width:100%;text-align:right;margin-top:10px;}
+.detailed .page span{display:inline-block;margin:0 10px;}
+.detailed .page span i{font-style:normal;}
+/*鎴戠殑閽卞寘end*/
+/*閽卞寘绌篵egin*/
+.walletEmpty{padding-top:30px;}
+.walletEmpty span{width:80px;height:80px;display: block;margin:0 auto;}
+.walletEmpty .tips{margin:20px auto;text-align:center;color: #999;}
+/*閽卞寘绌篹nd*/

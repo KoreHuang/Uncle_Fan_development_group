@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiesloch.mapper.GoodsMapper">
+	<sql id="isDel">
+		AND goods_isDel = '0'
+	</sql>
+
+	<!--查询商品分类 -->
+	<select id="selectGoodsType" resultType="com.wiesloch.po.Goods">
+		SELECT * FROM wine_goods
+		WHERE goods_pid=0
+		<include refid="isDel" />
+	</select>
+
+	<!--通过pid查询商品信息 -->
+	<select id="selectGoodsByPid" parameterType="Integer"
+		resultType="com.wiesloch.po.Goods">
+		SELECT * FROM wine_goods
+		WHERE goods_pid = #{pid}
+		<include refid="isDel" />
+	</select>
+
+	<!--索搜商品 -->
+	<select id="selectGoodsByName" parameterType="String"
+		resultType="com.wiesloch.po.Goods">
+		SELECT * FROM wine_goods WHERE goods_name LIKE '%${value}%' AND
+		goods_pid!=0
+		<include refid="isDel" />
+	</select>
+
+
+	<!--根据商品id查询具体的商品详情 -->
+	<select id="selectGoodsById" parameterType="Integer"
+		resultType="com.wiesloch.po.Goods">
+		SELECT * FROM wine_goods WHERE goods_id = #{id}
+		<include refid="isDel" />
+	</select>
+	
+	
+	<!--根据商品状态商品详情 -->
+	<select id="selectGoodsByStatus" parameterType="String"
+		resultType="com.wiesloch.po.Goods">
+		SELECT * FROM wine_goods WHERE goods_status = '${value}' AND goods_pid != 0
+		<include refid="isDel" />
+	</select>
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wiesloch.mapper.OrderDetailMapper">
+	<insert id="insertShopperingCar" parameterType="com.wiesloch.po.OrderDetailExtend">
+		 <selectKey keyProperty="orderDetail_id" order="AFTER" resultType="java.lang.Integer">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into wine_orderDetail(orderDetail_goodsId,orderDetail_userId,orderDetail_amount,orderDetail_price,orderDetail_isPay,orderDetail_isCart,orderDetail_isDelete,orderDetail_date)
+				values(#{orderDetail_goodsId},#{orderDetail_userId},#{orderDetail_amount},#{orderDetail_price},#{orderDetail_isPay},#{orderDetail_isCart},#{orderDetail_isDelete},#{orderDetail_date})
+	</insert>
+	<select id="selectShoppingCar" parameterType="java.lang.Integer" resultType="com.wiesloch.po.OrderDetailExtend">
+		SELECT g.goods_name,g.goods_pictureUrl,o.* FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId AND o.orderDetail_isDelete not in('1') AND o.orderDetail_isCart ='1'
+	</select>
+	
+	<select id="selectAllOrder" parameterType="java.lang.Integer" resultType="com.wiesloch.po.OrderDetailExtend">
+		SELECT g.goods_name,g.goods_pictureUrl,o.* FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId AND o.orderDetail_isDelete ='0' AND o.orderDetail_isCart ='0'
+	</select>
+	
+	<select id="selectWaitPayOrder" parameterType="java.lang.Integer" resultType="com.wiesloch.po.OrderDetailExtend">
+		SELECT g.goods_name,g.goods_pictureUrl,o.* FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId  AND o.orderDetail_isPay = '0' AND o.orderDetail_isDelete = '0' AND o.orderDetail_isCart ='0' AND o.orderDetail_isComplete = '0'
+	</select>
+	
+	<select id="selectWaitAcceptOrder" parameterType="java.lang.Integer" resultType="com.wiesloch.po.OrderDetailExtend">
+		SELECT g.goods_name,g.goods_pictureUrl,o.* FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId  AND o.orderDetail_isPay = '1' AND o.orderDetail_isDelete = '0' AND o.orderDetail_isCart ='0' AND o.orderDetail_isComplete = '0'
+	</select>
+	
+	<select id="selectCompleteOrder" parameterType="java.lang.Integer" resultType="com.wiesloch.po.OrderDetailExtend">
+		SELECT g.goods_name,g.goods_pictureUrl,o.* FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId  AND o.orderDetail_isPay = '1' AND o.orderDetail_isDelete = '0' AND o.orderDetail_isCart ='0' AND o.orderDetail_isComplete = '1'
+	</select>
+	
+	<select id="selectWaitPayCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT count(*) FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId  AND o.orderDetail_isPay = '0' AND o.orderDetail_isDelete = '0' AND o.orderDetail_isCart ='0' AND o.orderDetail_isComplete = '0'
+	</select>
+	
+	<select id="selectWaitAcceptCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT count(*) FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId  AND o.orderDetail_isPay = '1' AND o.orderDetail_isDelete = '0' AND o.orderDetail_isCart ='0' AND o.orderDetail_isComplete = '0'
+	</select>
+	
+	<select id="selectCompleteCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT count(*) FROM wine_orderDetail AS o,wine_goods AS g WHERE o.orderDetail_userId = #{value}
+			AND g.goods_id = o.orderDetail_goodsId  AND o.orderDetail_isPay = '1' AND o.orderDetail_isDelete = '0' AND o.orderDetail_isCart ='0' AND o.orderDetail_isComplete = '1'
+	</select>
+	
+	
+	<update id="deleteShoppingCarItemById" parameterType="java.lang.Integer" >
+		UPDATE wine_orderDetail SET orderDetail_isDelete = '1' WHERE orderDetail_id = #{value}
+	</update>
+	<update id="updateOrderDeatilState" parameterType="java.util.List">
+	
+		<!-- <foreach collection="list" item="item" index="index" open="" close="" separator=";">  
+                 UPDATE wine_orderDetail set orderDetail_isPay = '1' ,orderDetail_isCart = '0',
+                		orderDeatil_orderId = ${item.order_id}
+                WHERE orderDetail_id = ${item.orderDetail_id}
+         </foreach>  -->
+         	update wine_orderDetail set
+    		orderDetail_isPay = '1' ,orderDetail_isCart = '0',orderDeatil_orderId=
+  			<foreach collection="list" item="item" index="index" separator=" " open="case orderDetail_id" close="end">
+      				when #{item.orderDetail_id,jdbcType=INTEGER} then #{item.order_id,jdbcType=INTEGER}
+  			</foreach>
+  			where orderDetail_id in
+  			<foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+      				#{item.orderDetail_id,jdbcType=INTEGER}
+  			</foreach>
+	</update>
+</mapper>

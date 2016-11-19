@@ -1,0 +1,37 @@
+*{margin: 0;}
+
+.head{width: 100%;height: 10px;background-color: #e8e8e8;}
+.head_2{width: 100%;height: 80px;background-color: #f6f6f6;}
+.head_2_1{width:1020px ;height: 100%;margin: 0px auto;text-align:right;background-image:url(../img/logo.gif) ;background-repeat:no-repeat ; position: relative;}
+.clearfix:after{overflow: hidden;width: 100%;display: table;zoom: 1;}
+.link_1_1{font: "微软雅黑"; color: #d57500;text-decoration:none;position: absolute;bottom:0px;right: 0px;}
+.link_1_1:hover{color: red;}
+.head_3{width: 100%;height: 70px;background-color: #840f0f;}
+.head_3 ul{width:1020px ;height: 100%;margin: 0px auto;list-style: none;}
+.head_3 ul li{width:203px;height: 100%;float: left;line-height:70px;text-align: center;border-left: 1px solid #640d06;}
+.head_3 ul li a{color:#ffffff;font-family:"微软雅黑";font-size:15px;display: inline-block;font-style:normal;text-decoration: none; width:100%;height: 100%;}
+.head_3 ul li:hover{background: #580400;}
+
+.fir_on{height: 468px; background: #e6e5e3;}
+.fir_on_1{height: 100%;width: 1020px;margin: 0px auto;position: relative;}
+.fir_on_1 img{position: absolute;}
+.small_cir{position: absolute;width: 100px;text-align: center;left: 460px;top:420px;}
+.small_cir span{border-radius: 5px; background: white;display: inline-block;width: 10px;height: 10px;}
+.small_cir span:hover{background:red; cursor: pointer;}
+.fir_tail{height: 570px; background:#f6f6f6 ;}
+.fir_tail_f{width: 1020px;height: 530px; margin: 0px auto;padding-top:20px ;padding-bottom: 20px;}
+.president{height: 530px; width: 300px;float: left;line-height: 20px;color: #640F08;}
+
+.schoolPub_Generation{width: 619px;padding-left:20px ; padding-top: 10px;height: 520px;float: left;border-left: 1px dotted grey;}
+.General{border-bottom: 3px solid #dccacd;height: 30px;}
+.schoolPub_Generation .General span{ font-family: "微软雅黑";color: #640f08;font-size: 21px;line-height: 30px; border-bottom:3px solid #b20f17;display: inline-block;}
+.prograph{padding-top: 20px;padding-bottom:20px ;}
+.prograph p{font-family: "new york"; font-size: 15px;line-height: 19px;}
+.mid_prgh{padding-top: 20px;padding-bottom: 20px;}
+.tel_info{width: 100%;height: 150px;background-color:#f2f1ea ;border-top:1px solid #e5ded3;}
+.tel_all{width: 1020px;height: 100%;margin: 0px auto;padding-top: 30px;padding-bottom: 30px;}
+.tel_left{float: left;width: 300px;height: 100%;line-height: 30px;word-spacing: 2px;}
+.tel_right{float: left;width: 700px;padding-left:20px ;height: 100%;line-height: 30px;word-spacing: 2px;}
+
+.black_block{width: 100%;height: 20px;background-color:#1b1b1b;}
+.copy_right{width: 100%;height: 100px;background-color: #640f08;padding-top: 20px;color: #FFFFFF;text-align: center;font-family: "微软雅黑";font-size: 18px;}

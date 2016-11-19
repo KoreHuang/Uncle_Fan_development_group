@@ -1,0 +1,21 @@
+package text_thread;
+
+public class Account {
+	private int money=4000;
+	public synchronized int  TakeMoney() {
+		try {
+			String string=Thread.currentThread().getName();
+			System.out.println(string+"来取钱了....////");
+			if(money<1000){
+				System.out.println("钱不够了.....///,"+string+"没取到");
+				return 0;
+			}
+			Thread.sleep(1000);
+			money-=1000;
+			System.out.println(string+"刚取过钱，剩余"+money);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return money;
+	}
+}

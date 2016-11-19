@@ -1,0 +1,52 @@
+junit4 				4.10
+
+
+servlet-api 		3.1.0
+
+
+spring-core  		4.2.3
+spring-context 		4.2.3
+Spring-TestContext	4.2.3
+spring-web			4.2.3
+spring-webmvc		4.2.3
+spring-context-support 4.2.3
+spring-jdbc			4.2.3
+spring-orm			4.2.3
+Spring-aspects		4.2.3
+
+
+log4j				1.2.17
+log4j-core			2.5
+slf4j-log4j12		1.7.19
+
+Mybatis				3.3.0
+mybatis-spring		1.2.2
+
+
+commons-io			2.4
+commons-logging		1.2
+commons-pool		1.6
+commons-core		3.4
+commons-dbcp		1.2.2
+commons-fileupload	1.2.2
+
+
+jackson-core-asl	1.9.13
+jackson-mapper-asl	1.9.13
+
+
+jstl				1.2
+
+MySQl-connector		5.1.38
+
+C3P0				0.9.1.2
+
+aspectj				1.8.6
+
+asm					3.3.1
+
+javassist			3.18.2-GA
+
+jboss-logging		3.1.0.CR2
+
+fastjson			1.2.10

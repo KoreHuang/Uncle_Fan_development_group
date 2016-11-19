@@ -1,0 +1,29 @@
+package text_collection;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class TextSet2 {
+	public static void main(String[] args) {
+		users u1=new users(0,"Tom" );
+		users u2=new users(1,"Sam" );
+		users u3=new users(2,"Tim" );
+		users u4=new users(3,"Lily" );
+		users u5=new users(4,"Jack" );
+		users u6=new users(5,"Tophasen" );
+		users u7=new users(2,"Tim" );
+		Set<users> set=new HashSet<users>();
+		set.add(u1);
+		set.add(u2);
+		set.add(u3);
+		set.add(u4);
+		set.add(u5);
+		set.add(u6);
+		set.add(u7);
+		//Iterator<users> iterator=set.iterator();
+		for (users user : set) {
+			System.out.println(user.getId()+" "+user.getName());
+		}
+	}	
+}

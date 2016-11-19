@@ -1,0 +1,17 @@
+package mon7day9;
+
+public class TextClassDefaultValue {
+	int i=9;
+	String s="hello";
+	double d=3.14;
+	public TextClassDefaultValue() {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "["+i+s+d+"]";
+	};
+	public static void main(String[] args) {
+		System.out.println(new TextClassDefaultValue());
+	}
+}

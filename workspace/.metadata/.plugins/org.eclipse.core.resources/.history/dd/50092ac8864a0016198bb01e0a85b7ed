@@ -1,0 +1,18 @@
+package text_collection;
+
+import java.util.Scanner;
+
+public class Text_scanner {
+	public static void main(String[] args) {
+		System.out.println("Input your data:");
+		Scanner scanner=new Scanner(System.in);
+		
+		int id;
+		String name;
+		String sex;
+		id=scanner.nextInt();
+		name=scanner.next();
+		sex=scanner.next();
+		System.out.println(id+" "+name+" "+sex);
+	}
+}

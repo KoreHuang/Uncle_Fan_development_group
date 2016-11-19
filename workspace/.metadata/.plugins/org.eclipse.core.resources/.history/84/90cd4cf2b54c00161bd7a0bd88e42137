@@ -1,0 +1,19 @@
+package colorTicket;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+public class endListener implements ActionListener {
+	JPanel jp;
+	public endListener(JPanel jPanel) {
+		// TODO Auto-generated constructor stub
+		jp=jPanel;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

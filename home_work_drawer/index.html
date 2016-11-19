@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{marign:0px auto;padding:0px;text-decoration: none;font-family: "微软雅黑";}
+			ul{list-style: none;}
+			
+			.uu{width: 200px;}
+			.uu ul{background: #F2F1EB;text-align: center;overflow: hidden;height:0px}
+			.uu ul li{line-height: 24px;border-bottom: 1px solid #FFFFFF;}
+			.uu h3{background:url(img/b2.png) no-repeat #191E72;
+						padding-left: 45px;
+					color:white;margin:0px;
+					line-height: 45px;font-size:24px;
+					border-bottom: 3px solid slategray;cursor: pointer;}
+		 	.uu a{color:green;font-family: "微软雅黑";}
+		 	.uu a:hover{color:red}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				var uu = document.getElementById("uu");
+				var hs = uu.getElementsByTagName("h3"); 
+				var tag = false;//此处若改为标志数组则灵活性更强，准确性更高，单一的tag存在bug
+				hs[0].onclick = function (){
+					var ulTarget = hs[0].nextSibling.nextSibling;
+					
+					if(!tag){
+						openOrder(0);
+						tag = true;
+					}else{
+						ulTarget.style.height = "0px";
+						tag = false;
+					}
+				}
+				hs[1].onclick = function (){
+					var ulTarget = hs[1].nextSibling.nextSibling;
+					if(!tag){
+						openOrder(1);
+						tag = true;
+					}else{
+						ulTarget.style.height = "0px";
+						tag = false;
+					}
+				}
+				hs[2].onclick = function (){
+					var ulTarget = hs[2].nextSibling.nextSibling;
+					if(!tag){
+						openOrder(2);
+						tag = true;
+					}else{
+						ulTarget.style.height = "0px";
+						tag = false;
+					}
+				}
+				
+				function openOrder(index){
+					var hParLi = hs[index].parentElement;
+					var uls = uu.getElementsByTagName("ul"); 
+					console.log(uls);
+					var ulTarget = hs[index].nextSibling.nextSibling;
+					var subLi = ulTarget.getElementsByTagName("li");
+					console.log(subLi);
+					var target = subLi.length * (subLi[0].offsetHeight);
+					console.log(target);
+					dropMove(ulTarget,target);
+				}
+			}
+			var timer = null;
+			function dropMove(obj,target){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var preHit = parseInt(obj.style.height)?parseInt(obj.style.height):0;
+					var speed = (target-preHit)/8;
+					speed = speed>0 ? Math.ceil(speed):Math.floor(speed);
+					if(preHit == target){
+						clearInterval(timer);
+					}
+					obj.style.height = preHit + speed +"px";
+				}
+				,20);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<ul class="uu" id="uu">
+			<li>
+				<h3>吃----</h3>
+				<ul>
+					<li><a href="#">川菜</a></li>
+					<li><a href="#">陕菜</a></li>
+					<li><a href="#">湘菜</a></li>
+					<li><a href="#">粤菜</a></li>
+				</ul>
+			</li>
+			<li>
+				<h3>喝----</h3>
+				<ul>
+					<li><a href="#">啤酒</a></li>
+					<li><a href="#">白酒</a></li>
+					<li><a href="#">红酒</a></li>
+				</ul>
+			</li>
+			<li>
+				<h3>玩----</h3>
+				<ul>
+					<li><a href="#">桌球</a></li>
+					<li><a href="#">自驾</a></li>
+					<li><a href="#">跟团</a></li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>

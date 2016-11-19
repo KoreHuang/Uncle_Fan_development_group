@@ -1,0 +1,10 @@
+.mask{ display:none;width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: #000;opacity: 0.5;z-index: 999;}
+.alertTip{display:none;width:230px;height:auto;background-color: #000;opacity: 0.7;border-radius: 5px;color: #fff;position: fixed;top: 50%;left: 50%;margin: -50px 0 0 -115px;z-index: 1000;}
+.alertTip .tips{height:auto;line-height:20px;border-bottom: 1px solid #6e6e6e;text-align: center;padding:10px 5px;}
+.alertTip a.confirm{width:100%;height:36px;line-height:36px;display: inline-block;float: left;border-radius: 0;color:#fff;text-align: center;}
+.alertTip a.sure,.alertTip a.cancel{width:115px;height:36px;line-height:36px;display: inline-block;float: left;border-radius: 0;color:#fff;text-align: center;}
+.alertTip a.sure{width:114px;border-right:1px solid #6e6e6e;}
+
+/*order*/
+.alertTip a.sure.sureOrder,.alertTip a.cancel.cancelOrder{width:115px;height:36px;line-height:36px;display: inline-block;float: left;border-radius: 0;color:#fff;text-align: center;}
+.alertTip a.sure.sureOrder{width:114px;border-left:1px solid #6e6e6e;border-right:hidden;}

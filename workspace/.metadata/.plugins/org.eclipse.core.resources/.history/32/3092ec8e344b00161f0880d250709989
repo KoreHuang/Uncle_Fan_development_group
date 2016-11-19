@@ -1,0 +1,18 @@
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.rmi.server.ServerCloneException;
+
+import javax.sql.rowset.serial.SerialArray;
+
+public class TestServer {
+	public static void main(String[] args) {
+		try {
+			ServerSocket serverSocket=new ServerSocket(8989);
+			Socket socket=serverSocket.accept();
+			System.out.println("hello......it's me.....");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+}

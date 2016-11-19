@@ -1,0 +1,42 @@
+package colorTicket;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import javax.swing.JTextArea;
+
+public class cTMain extends JFrame {
+	public cTMain() {
+		// TODO Auto-generated constructor stub
+		GridLayout grid=new GridLayout(3, 11);
+		JPanel jp1=new JPanel();
+		JPanel jp2=new JPanel();
+		JTextArea jTextArea=new JTextArea(1,20);
+		jTextArea.setEditable(false);
+		jp1.setLayout(grid);
+		JButton jButton[]=null;
+		for (int i = 0; i < 33; i++) {
+			jButton[i]=new JButton(new ImageIcon("red/"+(i+1)+".png"));
+			jButton[i].setEnabled(false);
+			jp1.add(jButton[i]);
+		}
+		
+		
+		
+		this.add(jTextArea);
+		this.add(jp1,BorderLayout.NORTH);
+		this.add(jp2, BorderLayout.SOUTH);
+		this.setTitle("彩票售卖机");
+		this.setSize(400,200);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+	}
+	public static void main(String[] args) {
+		new cTMain();
+	}
+}

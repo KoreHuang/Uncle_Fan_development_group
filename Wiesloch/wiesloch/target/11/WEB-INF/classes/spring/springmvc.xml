@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!--开启自动扫描组件 -->
+	<context:component-scan base-package="com.wiesloch.controller" />
+
+	<!--mvc自动注解组件 -->
+	<mvc:annotation-driven />
+
+	<!--定义一个全局异常处理器 -->
+	<bean class="com.wiesloch.exception.ExceptionResolver" />
+
+	<!--定义一个视图适配器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置jsp路径的前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!-- 配置jsp路径的后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<mvc:interceptors>
+		<!-- 多个拦截器，顺序执行 -->
+		<!-- 日志 -->
+		<mvc:interceptor>
+			<!-- /**包括所有url和子路径 -->
+			<mvc:mapping path="/**" />
+			<bean class="com.wiesloch.interceptor.LogInterceptor"></bean>
+		</mvc:interceptor>
+		<!-- 登录校验 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/goods/*"/>
+			<mvc:exclude-mapping path="/user/*"/>
+			<bean class="com.wiesloch.interceptor.HasLoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!--日期转换类 -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 
+		<property name="converters"> 
+			<list>
+			 
+			 <!-- 日期类型的转换   -->
+			<bean class="com.wiesloch.controller.converter.CustomDateConverter"></bean> 
+			</list> 
+		</property> 
+		</bean>
+</beans>

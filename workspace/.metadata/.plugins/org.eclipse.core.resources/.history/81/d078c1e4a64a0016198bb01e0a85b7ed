@@ -1,0 +1,42 @@
+package text_collection;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
+public class Text_scanner {
+	
+	public static void main(String[] args) {
+		//System.out.println("Input your data:");
+		Scanner scanner=new Scanner(System.in);
+		int id;
+		String name;
+		String sex;
+		Stu s=null;
+		FileOutputStream foss;
+		ObjectOutputStream oss;
+		try {
+			System.out.println("Input Path:");
+			//scanner.next();
+			String path=scanner.next();
+			System.out.println(path);
+			foss=new FileOutputStream(path);
+			oss=new ObjectOutputStream(foss);
+			while (scanner.hasNextInt()) {
+				System.out.println("Input data:");
+				scanner.next();
+				id=scanner.nextInt();
+				name=scanner.next();
+				sex=scanner.next();
+				s=new Stu(id, name, sex);
+				oss.writeObject(s);
+				oss.flush();
+				//s.showInfo();
+				//System.out.println(id+"-"+name+"-"+sex);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{marign:0px auto;text-decoration: none;}
+			.d1{background: #FCFBE9;width: 600px;border: 5px solid #9AA0A3;margin:0px auto;text-align: center;}
+			h1{color:white;background: #99D9EA;text-align: center;font-family: "微软雅黑";margin: 0px;margin-bottom: 20px;padding:20px 0px;}
+			.d1 div{margin-bottom:10px ;line-height: 30px;}
+			.d1 input[type=text]{height: 26px;width: 300px;border: none;border-bottom: 1px solid gray;font-size: 20px;background: #FCFBE9;}
+			.d1 label{color:#633A31;font-family:arial;font-size: 24px;}
+			.d1 input[type=button]{width: 100px;height: 40px;margin-right: 10px;}
+			
+			.d2{width:600px;margin: 0px auto;margin-top: 50px;}
+			.d2 table{width: 100%;text-align: center;border-collapse: collapse;border: 1px solid #076894;}
+			table td,th{height: 40px;}
+			th{font-size: 20px;background: #1887BA;color:white}
+			td{font-size:16px}
+			.td1{width: 100px;}
+			.tr1{background: #F1EDED}
+			
+			tr:hover{background: #C1E9F3;cursor:pointer}
+			
+			.d2 a:hover{color:red}
+			 .d2 a{color:#1D7F12}
+			.d3 a{background: cornflowerblue;font-family: arial;color:#FFFFFF;display: inline-block;width: 100px;line-height: 40px;text-align: center;margin-top: 20px;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var add = document.getElementById("add");
+				var reset = document.getElementById("reset");
+				var inputText = document.getElementsByTagName("input");
+				var tbody = document.getElementById("tbody");
+				var bt_del = document.getElementById("bt_del");
+				var all_cho = document.getElementById("ck");
+				var chekArray = [];
+				var mdfies=null;
+				var dels=null;
+				var student = {
+					no:"",
+					name:"",
+					sex:"",
+					age:"",
+					loadInfo:function(){
+						this.no = arguments[0];
+						this.name = arguments[1];
+						this.sex = arguments[2];
+						this.age = arguments[3];
+					}
+				}//只有傻逼才会把student的信息封装起来
+				reset.onclick = function(){
+					for(var i=0;i<4;i++){
+						inputText[i].value="";
+					}
+				}
+				add.onclick = function(){
+					student.loadInfo(inputText[0].value,inputText[1].value,inputText[2].value,inputText[3].value);
+					//console.log(student);				//在控制台显示装载的student对象的信息
+					var tr = document.createElement("tr");		//添加一个行元素
+					var chktd = document.createElement("td");	//给行元素的第一列子元素
+					var check = document.createElement("input");		//check属性的单选框
+					check.type="checkbox";							
+					check.className="subChk";
+					chktd.appendChild(check);
+					tr.appendChild(chktd);
+					for(var i=0;i<4;i++){
+						var td = document.createElement("td");
+						td.innerText = inputText[i].value;
+						tr.appendChild(td);
+					}//添加输入的四个数据
+					var tail_td = document.createElement("td");
+					var mdfy = document.createElement("a");
+					var del = document.createElement("a");
+					var spac = document.createElement("span");
+					spac.innerText="  ";
+					mdfy.innerText = "修改";
+					mdfy.className="mdfy";
+					del.innerText = "删除";
+					del.className="del";
+					tail_td.appendChild(mdfy);
+					tail_td.appendChild(spac);
+					tail_td.appendChild(del);
+					tr.appendChild(tail_td);	
+					tbody.appendChild(tr);//将新建的行以元素添加到表末尾
+					for(var j=0;j<4;j++){
+								inputText[j].value="";
+					}
+					loadColor();
+					var tag ;
+					chekArray = document.getElementsByClassName("subChk");
+					for(var i=0;i<chekArray.length;i++){
+						chekArray[i].onclick = function(){
+							if(!this.checked) {
+								console.log(chekArray);
+								console.log(this);
+								tag =SerchIndex(chekArray,this);
+								if((tag%2)==1){
+									
+									notSelChgColorSec(this);	
+								}else{
+									notSelChgColor(this);
+									
+								}
+								all_cho.checked=false;
+								return;
+							}
+							else{
+								selChgColor(this);
+								
+								var j=0;
+								for( j=1;j<chekArray.length&&chekArray[j].checked  ;j++);
+								if(j==chekArray.length) all_cho.checked=true;						
+							}
+						}
+					}
+
+					mdfies = document.getElementsByClassName("mdfy");//给mdfy节点绑定监听事件
+					for(var i=0;i<mdfies.length;i++){
+						mdfies[i].onclick = function(){
+							var paNodetd = this.parentElement;
+							var ppNodetr=paNodetd.parentElement;
+							var ppNodeChildren = ppNodetr.childNodes;
+							for(var j=1;j<5;j++){
+								inputText[j-1].value=ppNodeChildren[j].innerText;
+							}
+							tbody.removeChild(ppNodetr);
+						}
+					}
+					dels = document.getElementsByClassName("del");//给del节点绑定监听事件
+					for(var j=0;j<dels.length;j++){
+						dels[j].onclick = function(){
+							var paNodetd = this.parentElement;
+							var ppNodetr=paNodetd.parentElement;
+							tbody.removeChild(ppNodetr);
+							loadColor();
+						}
+					}
+					
+				}
+				
+				bt_del.onclick = function(){
+					chekArray = document.getElementsByClassName("subChk");
+					for(var i = chekArray.length-1;i>=0;i--){
+						if(chekArray[i].checked){
+							delTr(chekArray[i]);
+						}
+					}
+					chekArray = document.getElementsByClassName("subChk");
+					var tag ;
+					for(var i=0;i<chekArray.length;i++){
+						chekArray[i].onclick = function(){
+							if(!this.checked) {
+								console.log(chekArray);
+								console.log(this);
+								tag =SerchIndex(chekArray,this);
+								if((tag%2)==1){
+									
+									notSelChgColorSec(this);	
+								}else{
+									notSelChgColor(this);
+									
+								}
+								all_cho.checked=false;
+								return;
+							}
+							else{
+								selChgColor(this);
+								
+								var j=0;
+								for( j=1;j<chekArray.length&&chekArray[j].checked  ;j++);
+								if(j==chekArray.length) all_cho.checked=true;						
+							}
+						}
+					}
+					all_cho.checked = false;
+					loadColor();
+				}
+				function selChgColor(chek){
+					var chekTd = chek.parentElement;
+					var chekTr = chekTd.parentElement;
+					chekTr.style.backgroundColor="aqua";
+				}
+				function notSelChgColor(chek){
+					var chekTd = chek.parentElement;
+					var chekTr = chekTd.parentElement;
+					chekTr.style.backgroundColor="seashell";
+				}
+				function notSelChgColorSec(chek){
+					var chekTd = chek.parentElement;
+					var chekTr = chekTd.parentElement;
+					chekTr.style.backgroundColor="white";
+				}
+				function SerchIndex(chekArryTmp,chek){
+					for(var i=0;i<chekArryTmp.length;i++){
+						if(chek==chekArryTmp[i]){
+							return i;
+						}
+					}
+					return -1;
+				}
+			    function loadColor(){
+			    		var tbodyChild = tbody.childNodes;
+			    		for(var i=1;i<tbodyChild.length;i+=2){
+			    			tbodyChild[i].style.backgroundColor="seashell";
+			    		}
+			    		for(var i=2;i<tbodyChild.length;i+=2){
+			    			tbodyChild[i].style.backgroundColor="white";
+			    		}
+			    }//end loadColor  定义着色函数  在每次添加元素和删除元素时重新着色
+				
+				
+				
+				function delTr(chek){
+					var chekTd = chek.parentElement;
+					var chekTr = chekTd.parentElement;
+					chekTr.remove();
+				}
+				
+				ck.onclick=function(){
+					chekArray = document.getElementsByClassName("subChk");
+					for(var i=0;i<chekArray.length;i++){
+						if(this.checked)	selChgColor(chekArray[i]);
+						else {
+							if((i%2)==1){
+								notSelChgColorSec(chekArray[i]);		
+							}else{
+								notSelChgColor(chekArray[i]);
+							}
+						}
+						chekArray[i].checked = this.checked;
+					}
+				}
+			}
+		</script>
+		
+		
+		
+		
+		
+	</head>
+	<body>
+		<div class="d1">
+			<h1>学生信息管理</h1>
+			<div style="">
+				<div>
+					<label>编号:</label><input type="text" id="num"/>
+				</div>
+				<div>
+					<label>姓名:</label><input type="text" id="name"/>
+				</div>
+				<div>
+					<label>性别:</label><input type="text" id="sex"/>
+				</div>
+				<div>
+					<label>年龄:</label><input type="text" id="age"/>
+				</div>
+				<div>
+					<input type="button"  value="添加" id="add"/>
+					<input type="button"  value="重置" id="reset"/>
+				</div>
+			</div>
+		</div>
+		<div class="d2">
+			<table border="1">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="ck"/></th>
+						<th>编号</th>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>年龄</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody  id="tbody">
+				</tbody>
+			</table>
+			<div class="d3">
+				<a href="#" id="bt_del">批量删除</a>
+			</div>
+		</div>
+	</body>
+</html>

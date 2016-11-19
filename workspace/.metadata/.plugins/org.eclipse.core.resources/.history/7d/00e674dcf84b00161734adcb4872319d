@@ -1,0 +1,12 @@
+package text_thread;
+
+import java.util.concurrent.CountDownLatch;
+
+public class Text3 extends Thread {
+	public static void main(String[] args) {
+		Account ccount=new Account();
+
+		Nythread2 th1= new Nythread2("",ccount);
+		Nythread2 th2= new Nythread2("",ccount);
+	}
+}

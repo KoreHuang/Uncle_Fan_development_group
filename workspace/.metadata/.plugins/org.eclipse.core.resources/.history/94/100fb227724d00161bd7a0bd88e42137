@@ -1,0 +1,47 @@
+package colorTicket;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class startThread extends Thread{
+	private JButton jb[];
+	private JPanel jp;
+	private JTextArea jTextArea;
+	public startThread(JButton jb[],JPanel jPanel,JTextArea jTextArea) {
+		// TODO Auto-generated constructor stub
+		this.jb=jb;
+		jp=jPanel;
+		this.jTextArea=jTextArea;
+	}
+	@Override
+	public void run() {
+		int cnt=60;
+		String mString="距离结束还有";
+		jTextArea.setText(mString+20+"秒");
+		try {
+			while(cnt>0){
+				if(!this.isInterrupted()){
+					for (int i = 0; i < jb.length; i++) {
+						jb[i].setEnabled(true);
+						jp.repaint();
+						Thread.sleep(10);
+						jb[i].setEnabled(false);
+						jp.repaint();
+					}
+				}
+				cnt--;
+				jTextArea.setText(mString+cnt+"秒");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			//e.printStackTrace();
+			this.interrupt();
+		}
+	};
+//	public void  close() {
+//		for (int i = 0; i < jb.length; i++) {
+//			jb[i].setEnabled(false);
+//		}
+//	}
+}

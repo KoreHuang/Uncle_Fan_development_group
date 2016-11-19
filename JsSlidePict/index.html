@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.rahmen:hover{cursor: pointer;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var rahmen = document.getElementById("rahmen");
+				var imgs=[];
+				for(var i=0;i<15;i++){
+					imgs[i] = document.createElement("img");
+					imgs[i].src="img/img"+i+".jpg";
+					imgs[i].style.zIndex = 20-i;
+					rahmen.appendChild(imgs[i]);
+					imgs[i].style.position = "absolute";
+					imgs[i].style.height="410px";
+					imgs[i].style.width ="650px"; 
+				}
+				function getPosi(ev){
+					var x = ev.clientX;
+					var y = ev.clientY;
+					if(x<rahmen.offsetLeft && (y < rahmen.offsetTop+rahmen.offsetHeight && y>rahmen.offsetTop)){
+						option = "left";
+					}else if(x>rahmen.offsetLeft+rahmen.offsetWidth 
+						&& y > rahmen.offsetTop && y<rahmen.offsetTop+rahmen.offsetHeight){
+						option = "right";
+					}else if(y>rahmen.offsetTop+rahmen.offsetHeight 
+						&& (x < rahmen.offsetLeft+rahmen.offsetWidth && x>rahmen.offsetLeft)){
+						option = "bottom";
+					}else if(y<rahmen.offsetTop &&(x < rahmen.offsetLeft+rahmen.offsetWidth 
+						&& x>rahmen.offsetLeft)){
+						option = "top";
+					}
+					console.log(option);
+				}
+				document.onmousemove = getPosi;
+				var topZin=999;
+				var botZin=-999;
+				var  prev=0;
+				var next=0;
+				var flag = false;
+				var option="";//用来标识鼠标进入方向
+				
+				rahmen.onmouseenter = function(){
+					document.onmousemove = null;
+					next  = next%imgs.length;
+					//将要运动的元素层级提升
+					imgs[next].style.zIndex = ++topZin;
+					imgs[next].style.opacity = 0.5;
+					//将上一个元素拉回
+					if(flag){
+						imgs[prev].style.left = "0px";
+						imgs[prev].style.top = "0px";
+						imgs[prev].style.opacity = 1;
+						imgs[prev].style.zIndex = botZin--;
+						prev = next;
+					}
+					flag = true;
+					var tar =null;
+					switch(option){
+						case "left":tar ={left:parseInt(imgs[next].style.width)}; break;
+						case "right":tar ={left:-parseInt(imgs[next].style.width)};break;
+						case "top":tar ={top:parseInt(imgs[next].style.height)};break;
+						case "bottom":tar ={top:-parseInt(imgs[next].style.height)};break;
+						default :tar = null;
+					}
+					console.log(tar);
+					startMove(imgs[next++],tar);
+				}
+				rahmen.onmouseleave = function(){
+					document.onmousemove = getPosi;
+				}
+				var timer = null;
+				function startMove(obj,tar){
+					clearInterval(timer);
+					if(!tar) return;
+					timer =setInterval(function(){
+						var flag = true;
+						for(var attr in tar){
+							var direction = attr.substring(0,1).toUpperCase()+attr.substring(1);
+							var distance = obj["offset"+direction];		
+							var speed = (tar[attr]-distance)/7;
+							speed = speed>0?Math.ceil(speed):Math.floor(speed);
+							if(distance != tar[attr]){
+								flag = false;
+							}
+							obj.style[attr]=distance+speed+"px";
+						}
+						if(flag){
+							clearInterval(timer);
+						}	
+					}
+					,30);
+				}	
+			}
+		</script>
+	</head>
+	<body>
+		<div class="rahmen" id="rahmen" style="height: 410px;width: 650px;border: 5px solid gray;margin: 150px auto;position: relative;overflow: hidden;">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!--设置别名 -->
+	<typeAliases>
+		<package name="com.wiesloch.po" />
+	</typeAliases>
+
+	<!--需要开启settings我们在开启setting -->
+
+	<!--我们通过mapper扫面器扫描无需配置mappers -->
+
+</configuration>

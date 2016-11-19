@@ -1,0 +1,40 @@
+import java.awt.BorderLayout;
+import java.awt.BufferCapabilities;
+
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class QQSever extends JFrame {
+	public QQSever() {
+		// TODO Auto-generated constructor stub
+		JTextArea jTextArea=new JTextArea();
+		JPanel jPanel=new JPanel();
+		String title="小🐘";
+		JButton send=new JButton("发送");
+		JTextField jTextField=new JTextField(300);
+		JScrollPane jpPane=new JScrollPane(jTextArea);
+		jPanel.add(send);
+		jPanel.add(jTextField);
+		send.addActionListener(new SendButtonListener(jTextArea,jTextField,title));		
+		jTextArea.setEnabled(false);
+		
+		
+		this.setTitle(title);
+		this.add(jPanel,BorderLayout.SOUTH);
+		this.add(jpPane);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(550, 800);
+		
+	}
+	public static void main(String[] args) {
+		QQSever sqa=new QQSever();
+	}
+}

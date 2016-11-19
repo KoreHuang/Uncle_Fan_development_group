@@ -1,0 +1,275 @@
+.LOG
+数据库知识点总结
+1.安装与配置
+略！！！！！！！
+
+2.mysql服务：
+——启动mysql服务： net start mysql
+——停止mysql服务： net stop mysql
+
+3.mysql使用
+—mysql 登录：mysql 参数
+——参数：
+	-v， --version 输出版本信息
+	-u，--user==name 用户名
+	-p，--password[=name] 密码
+	-h，--host=name 服务器名：默认3306；
+	-D，--database=name 打开指定数据库
+	-P，--port=# 端口号
+
+—mysql退出：
+——mysql  > exit;
+——mysql  > quit;
+——mysql  > q;
+
+4.修改mysql提示符
+
+—连接客户端是通过参数指定：shell>mysql -u root -proot --prompt  提示符（\D:完整日期；\d:当前数据库；\h:服务器名；\u:当前用户）
+
+—连接上客户端后，通过PROMPT命令修改 :mysql> PROMPT 提示符（\D:完整日期；\d:当前数据库；\h:服务器名；\u:当前用户）
+
+5.管理mysql命令：（规范：1.关键字，函数名称全部大写；2.数据库名称，表名称，字段名称全部小写；3.sql语句必须由分号结尾）
+
+取消当前输入,准备接受新的指令 —  \c;
+
+显示当前mysql版本信息 —mysql> SELECT VERSION();显示当前mysql版本信息；
+
+显示当前时间 —mysql> SELECT NOW();
+
+显示当前用户 —mysql> SELECT USER();
+
+创建数据库 — CREATR { DATABASE | SCHEMA } [IF NOT EXISTS] db_name [ DEFAULT ] CHARACTER SET [ = ] charset_name
+
+查看当前服务器下数据库列表 —SHOW DATABASES; 
+
+查看错误信息 —SHOW WARNINGS;
+
+查看数据库创建命令 —SHOW CREATE DATABASE 数据库名；
+
+修改数据库编码方式 —ALTER { DATABASE | SCHEMA } [ db_name ] [ DEFAULT ] CHARACTER SET [ = ] charset_name
+
+删除数据库 — DROP  { DATABASE | SCHEMA }  [ IF EXISTS ]  db_name
+
+列出数据表列表 —SHOW TABLES;
+
+显示数据表属性，属性类型，主键信息，是否为NULL，默认值—SHOW COLUMNS FROM 数据表名；
+
+显示数据表详细索引信息，包括主键—SHOW INDEX FROM 数据表名；
+
+6.数据表—组成数据库
+
+使用数据库 —USE  数据库名； （该数据库必须存在）
+	USE test;
+
+显示当前打开的数据库— SELECT DATABASE();
+
+创建数据表 — 	CREATE TABLE [IF NOT EXISTS] table_name（	
+		column_name  data_type,
+		...
+		）;
+
+	例：	CREATE TABLE [IF NOT EXISTS] table_name（	
+		column_name  data_type,
+		...
+		）;
+
+列出当前数据库的数据表列表 —SHOW TABLES; 
+
+显示其他数据表列表—SHOW TABLES [ FROM db_name ];
+		SHOW TABLES FROM mysql;
+
+显示数据表属性，属性类型，主键信息，是否为NULL，默认值—SHOW COLUMNS FROM 数据表名；
+	SHOW COLUMNS FROM tb1；或者 DESCRIBE tb1；
+
+数据的插入—INSERT [ INTO ] tb_name [( clo_name )] VALUES (var，....)
+	INSERT tb2 VALUES ('ZHANGSAN',19,25631 );    输入全部字段值
+	INSERT tb2 ( username , age ) VALUES ('lisi',20);  输入可选字段值
+文本数据的插入—LOAD DATA LOCAL INFILE  '/path/pet.txt' （文件路径） INTO TABLE pet;
+记录查找—SELECT  expr,... 
+	FROM tbl_name
+
+	SELECT * FROM tb1;   查找所有列
+	***************************************************
+	SELECT  what_to_select
+	FROM  which_table
+	WHERE  conditions_to_satisfy;
+
+数据的删除—DELETE  FROM 表名 WHERE 条件；
+
+
+自动编号— AUTO_INCREMENT；必须结合主键使用，初值为1，递增1
+
+
+
+约束：（保证 数据完整性和一致性；分为表级约束，列级约束）
+
+非空约束—NOT NULL 
+	空值与非空
+	可以为NULL—NULL   
+	不可以为NULL—NOT NULL 	
+
+主键约束—PRIMARY KEY（每张表只有一个主键；以保证记录的唯一性；主键自动为NOT NULL）
+
+唯一约束—UNIQUE KEY（保证记录的唯一性、唯一约束的字段可以为空值NULL,每张表可以有多个唯一约束）
+
+默认约束—DEFAULT （默认值、当插入记录时候没有明确为字段赋值，则自动赋予默认值）
+	CREATE TABLE tb6(
+	id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(20)  NOT NULL UNIQUE KEY,
+	sex ENUM('man','women','NULL') DEFAULT 'NULL'
+	);
+
+
+19:12 2016/6/13
+
+外键约束—FOREIGN KEY（保持数据一致性，完整性；实现一对一 或 一对多关系）
+
+要求{
+1.父表字表具有相同的存储引擎，而且禁止使用临时表
+2.数据表的存储引擎必须为InnoDB
+3.外键列和参照列必须有相似的数据类型，数字的长度或是否有符号位必须相同，而字符的长度则可以不同
+4.外键列和参照列必须有索引，参照列缺少索引，mysql自动添加，
+}
+
+外键约束的参照操作{
+1.CASCADE:从父表删除或者更新时，同时删除或者更新子表匹配的行
+
+2. SET NULL: 从父表删除或者更新行，并且设置子表外键列为NULL。如果使用该选项，必须保证子表列没有指定NOT NULL
+
+3.RESTRICT：拒绝对父表更新或者删除操作
+
+4.NO ACTION ：标准SQL的关键字，在MYSQL中与RESTRICT相同。
+｝
+
+表级约束与列级约束
+对一个数据列建立的约束——列级约束
+对多个数据列建立的约束——表级约束
+列级约束既可以在列定义时声明，也可以在列定义后声明
+表级约束只能在列定义后声明。
+
+
+
+数据表的添加与删除
+修该数据表
+******************************************************************************************
+
+添加一列
+ALTER TABLE tb_name ADD [ COLUMN ] col_name colum_definition[ FIRST| AFTER col_name ]
+	ALTER TABLE users1 ADD age TINYINT UNSIGNED NOT NULL DEFAULT 10;
+	ALTER TABLE users1 ADD password VARCHAR(32) NOT NULL AFTER username;
+	ALTER TABLE users1 ADD turename VARCHAR(32) NOT NULL FIRST;
+添加多列
+ALTER TABLE tb_name ADD [ COLUMN ] （col_name colum_definition,.....）
+******************************************************************************************	
+
+删除一列
+ALTER TABLE tb_name  DROP [ COLUMN ] col_name;
+删除多列
+ALTER TABLE tb_name  DROP [ COLUMN ] col_name，DROP [ COLUMN ] col_name ,......; 
+****************************************************************************************** 
+
+
+添加约束
+******************************************************************************************
+
+添加主键约束
+ALTER TABLE tb_name ADD [ CONSTRAINT [ symbol ]] PRIMARY KEY [  indes_type(索引类型) ] (index_col_name，....)
+******************************************************************************************
+
+添加外键约束
+ALTER TABLE tb_name ADD [ CONSTRAINT [ symbol ]] FOREIGN KEY [index-name] (index_col_name,.....)reference_definition
+	ALTER TABLE users2 ADD FOREIGN KEY (pid) REFERENCES provinces(id);
+******************************************************************************************
+
+添加/删除默认约束
+ALTER TABLE tb_name ALTER [ COLUMN ] col_name { SET DEFAULT literal | DROP DEFAULT }
+	ALTER TABLE users2 ALTER  age SET DEFAULT 10;
+	ALTER TABLE users2 ALTER  age DROP DEFAULT;
+******************************************************************************************
+
+删除约束
+******************************************************************************************
+
+删除主键约束
+ALTER TABLE tb_name DROP PRIMARY KEY;
+	ALTER TABLE users2 DROP PRIMAR KEY;
+******************************************************************************************
+
+删除唯一约束（首先查看数据表的约束名）
+ALTER TABLE tb_name DROP ｛INDEX | KEY｝ index_name;
+	ALTER TABLE users2 DROP INDEX username;
+******************************************************************************************
+
+删除外键约束(首先查看外键约束的名字)
+ALTER TABLE tb_name DROP FOREIGN KEY fk_symbo;
+	ALTER TABLE users2 DROP FOREIGN KEY users2_ibfk_1;
+******************************************************************************************
+
+修改列定义（在修改字段的数据类型时，从大类型到小类型，有可能造成数据的丢失）
+******************************************************************************************
+ALTER TABLE tb_name MODIFY [ COLUMN ] col_name column_definition [ FIRST | AFTER col_name ];
+置于表首—ALTER TABLE users2 MODIFY id SMALLINT(5) UNSIGNED NOT NULL FIRST;  
+修改数据类型—ALTER TABLE users2 MODIFY id TINYINT(5) UNSIGNED NOT NULL ;  
+
+修改列名称（功能比modify大，）
+******************************************************************************************
+ALTER TABLE tb_name CHANGE [ COLUMN ] old_col_name  new_col_name column_definition [ FIRST | AFTER col_name ];
+	ALTER TABLE users2 CHANGE pid p_id TINYINT UNSIGNED NOT NULL;
+
+数据表更名
+******************************************************************************************
+
+方法1: ALTER TABLE tb_name RENAME [ TO | AS ] new_tb_name;
+	ALTER TABLE users2 RENAME TO users3;
+方法2：RENAME TABLE tb_name TO new_tb_name
+	[ ,tb_name TO new_tb_name......];
+******************************************************************************************
+********************** 尽量少使用数据列的更名和数据表更名**************************
+* 我们尽量少使用数据列的更名以及数据表的更名，原因很简单，当我们以后创建了
+* 索引，或者说曾经使用过视图或存储过程的话，表名或列名曾经被引用的情况下，
+* 如果说，将表名或列名修改了可能会导致某些视图或存储过程无法正常地来工作，
+* 所以说我们建议大家，不要去随意地更改数据列的名字和数据表的名字，
+* 到现在为止，我们已经能够实现完整的约束操作以及数据表的操作。
+******************************************************************************************
+
+数据表记录的修改
+******************************************************************************************
+
+插入记录
+INSERT [INTO] tbl_name [(col_name,...)] ｛ values | value ｝(｛expr | DEFAULT｝,value1,...),(....)...; 
+所有列赋值；选择列赋值；多条记录插入
+
+插入记录 
+INSERT [INTO] tbl_name SET col_name = { expr|DEFAULT},....
+
+插入记录 (将查找结果插入指定数据表)
+INSERT [INTO] tbl_name [(col_name , ....)] SELECT ....
+
+更新记录（单表更新）
+UPDATE tbl_name set column1 = {expr1 | DEFAULT}[,column1 = {expr1 | DEFAULT},] [WHERE where_condition]
+
+
+删除记录（单表删除）
+DELETE FROM tbl_name WHERE where_condition 
+
+
+查询表达式（select_expr）
+
+条件表达式（where_condition）
+
+查询结果分组
+GROUP BY {col_name | position }[ASC | DESC , ....]
+
+分组条件
+[HAVING where_condition]
+
+查询结果排序
+ORDER  BY {col_name | position }[ASC | DESC , ....]
+
+限制查询结果记录返回数量
+LIMIT ｛[offset,] row_count | row_count OFFSET offset｝
+
+
+14:13 2016/7/11
+
+15:52 2016/7/19

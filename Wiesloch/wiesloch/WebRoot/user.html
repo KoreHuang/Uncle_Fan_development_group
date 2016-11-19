@@ -1,0 +1,145 @@
+<html slick-uniqueid="3"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+
+<link href="css/reset.css" rel="stylesheet" type="text/css">
+<link href="css/user.css" rel="stylesheet" type="text/css">
+<link href="css/head.css" rel="stylesheet" type="text/css">
+  
+
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
+
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+<body>
+    
+		
+		
+
+
+<div class="publicHead" id="head">
+	    <div class="head clearfix">
+			<a class="back" href="=" ></a>
+			<h2 class="headTitle">个人中心</h2>
+            <a class="navBar" href=""></a>
+        </div>
+
+        
+        <ul class="nav">
+            <li class="home"><i></i><span>首页</span><a href=""></a></li>
+            <li class="topsearch"><i></i><span>搜索</span><a href=""></a></li>
+            <li class="cart"><i></i><span>购物车</span><a href=""></a></li>
+            <li class="commuser"><i></i><span>我的</span><a href=""></a></li>
+        </ul>
+	</div>
+<script>
+ $(function(){
+        /*头部导航菜单begin*/
+        $('.navBar').toggle(
+            function(){
+                $('.nav').addClass('on');
+                $('section').css('margin-top','85px');
+                if($('#filter_search') !=null && $('#filter_search') !='undefined'){
+                	$('#filter_search .filterMask').css('top','135px');
+        			$('#filter_search .filterFrame').css('top','135px');
+                }
+            },
+            function(){
+                $('.nav').removeClass('on');
+                $('section').css('margin-top','40px');
+                if($('#filter_search') !=null && $('#filter_search') !='undefined'){
+                	$('#filter_search .filterMask').css('top','90px');
+        			$('#filter_search .filterFrame').css('top','90px');
+                }
+            }
+        );
+        /*头部导航菜单end*/
+    });
+ 
+ 	var backpage = function(){
+ 		if(history.length==0){
+ 			window.location.href='http://m.jiuxian.com';
+ 		}else{
+ 			history.back();
+ 		}
+ 	};
+ 
+ 
+ 
+  </script>
+		
+	
+    
+    <section class="userCenter clearfix" id="top">
+        <div class="userInfo clearfix">
+            <img class="bg" src="">
+            <div class="userDetail">
+                <div class="userPhoto">
+                    <div class="mask"></div>
+                    <img src="">
+                </div>
+                <div class="info">
+                    <p class="userName">jxw48205314</p>
+                 
+                </div>
+            </div>
+            <div class="order">
+                <p class="grade">LV1 酒虫</p>
+                <div class="orderStatus">
+                    <a href=""><strong>0</strong><span>待付款</span></a>
+                    <a href=""><strong>0</strong><span>待发货</span></a>
+                    <a href=""><strong>0</strong><span>待收货</span></a>
+                    <a href=""><strong>0</strong><span>已完成</span></a>
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+            </div>
+        </div>
+        <div class="contentFrame">
+            <ul class="list clearfix">
+                
+            	<li><a class="orderList" href=""><img src=""><span>全部订单</span></a></li>
+                <li><a class="cartList" href=""><img src=""><span>购物车</span></a></li>
+               
+                <li><a class="coupon" href=""><img src=""><span>我的优惠券</span></a></li>
+              
+		                <li><a class="wallet" href=""><img src=""><span>我的钱包</span></a></li>
+		                <li><a class="exchange" href=""><img src=""><span>积分兑换</span></a></li>
+		                <li><a class="address" href=""><img src=""><span>地址管理</span></a></li>
+		                <li><a class="safe" href=""><img src=" "><span>帐户安全</span></a></li>
+                	
+                
+            </ul>
+        </div>
+         
+         	
+         	
+         	
+         	<a href="" class="btn" id="xmlogout">退出登录</a>
+         	
+         
+    </section>
+
+
+
+</body></html>

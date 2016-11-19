@@ -1,0 +1,157 @@
+1.什么是继承性？请举例说明。继承性有哪些好处？
+
+“继承”是面向对象软件技术当中的一个概念。如果一个类A继承自另一个类B，
+就把这个A称为"B的子类"，而把B称为"A的父类"。
+
+3.受保护的protected成员有哪些特性？受保护成员以公有方式或私有方式被继承后的访问限制如何？
+
+protected成员：1.允许子类与父类之间的访问；2.类内部访问；3.外部不能访问
+公有方式继承后基类的保护成员作为派生类的保护成员，类内可以直接访问，类外部不能访问。
+私有方式继承后基类的保护成员作为派生类的私有成员，并且不能被这个派生类的子类所访问
+
+6.什么是赋值兼容规则？请举例说明。
+
+赋值兼容规则是指在需要基类对象的任何地方都可以使用公有派生类的对象来替代。
+赋值兼容规则中所指的替代包括以下的情况： 
+　　·派生类的对象可以赋值给基类对象。
+　　·派生类的对象可以初始化基类的引用。
+　　·派生类对象的地址可以赋给指向基类的指针。
+
+7.下面是一个含有派生类的c++程序，请编译并运行这个c++程序。
+
+#include <iostream>
+
+class A
+{
+	protected :
+		int m , n ;
+	public :
+		void set (int a , int b ) {
+			m = a ; 
+			n = b ;
+		}
+		
+		void show() {
+			std::cout << m << " " << n << "\n" ;
+		}
+};
+
+class B : public A
+{
+	    int s ;
+	public :
+		void sets() {
+			s = m * n ;
+		}
+		
+		void shows () {
+			std::cout << s << std::endl ;
+		}
+};
+
+
+int main() {
+	B obj ;
+	obj.set(2 , 3) ;
+	obj.show() ;
+	obj.sets() ;
+	obj.shows() ;
+		
+	return 0;
+}
+在这个程序中，类B的函数能否访问类A中的变量m和n？ 为什么？ 修改该程序将类A中的m和n定义为私有成员，观察编译程序会给出什么编译信息，为什么？
+
+在这个程序中类B的函数能直接访问A中的变量m和n，因为m和n为基类的保护成员，派生类公有继承基类时基类的保护成员作为派生类的保护成员，可以类内直接访问；
+
+将类A中的m和n定义为私有成员后，编译器提示有错误。派生类无论以哪种方式继承基类都不可以直接访问基类的私有成员，而类Ｂ有函数直接访问基类Ａ中的私有成员，所以编译器提示错误。
+
+
+８.已知下面的c++程序框架，请按照注释中的提示补充细节并编译运行改程序。
+#include <iostream>
+using namespace std ;
+
+class planet
+{
+	protected :
+		double distance ; // miles from the sun 
+		int revolve ; // in days 
+	public :
+		
+		planet (double d , int r) {
+			distance = d ;
+			revolve   = r ;
+		}
+};
+
+class earth : public planet
+{
+	    double circumference ; // 
+	
+	public :
+
+		/*Create earth (double d , int r) . Have it pass the distance and days of revolution back to planet . Havae it compute the circumference 
+		of the orbit . (Hint : curcumference = 2 * r * 3.1416)*/
+		//Create a function called show () that displays the information.
+};
+
+
+int main(int argc, char** argv) {
+	
+	earth ob(93000000 , 365) ;
+	ob.show() ;
+
+	return 0;
+}
+
+
+答
+#include <iostream>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+using namespace std ;
+
+class planet
+{
+	protected :
+		double distance ; // miles from the sun 
+		int revolve ; // in days 
+	public :
+		planet() {}
+		planet (double d , int r) {
+			distance = d ;
+			revolve   = r ;
+		}
+};
+
+class earth : public planet
+{
+	    double circumference ; // 
+	
+	public :
+
+		earth (double d1 , int r1) {
+			distance = d1 ;
+			revolve  = r1 ;
+		}
+		
+		void show () {
+			circumference = 2 * revolve * 3.1416 ;
+			cout << "Distance from the earth to the sun is  " << distance << endl ;
+			cout << "The earth around the sun and the time is " << revolve << " days" << endl ;
+			cout << "The circumference of the earth's orbit around the sun is " << " circumference" << endl ;   
+			
+		}
+		/*Create earth (double d , int r) . Have it pass the distance and days of revolution back to planet . Havae it compute the circumference 
+		of the orbit . (Hint : curcumference = 2 * r * 3.1416)*/
+		//Create a function called show () that displays the information.
+};
+
+
+int main(int argc, char** argv) {
+	
+	earth ob(93000000 , 365) ;
+	ob.show() ;
+
+	return 0;
+}
+

@@ -1,0 +1,17 @@
+package 静态数据成员的初始化;
+
+public class tmpClass {
+	origenClass1 class1=new origenClass1(1);
+	public tmpClass() {
+		// TODO Auto-generated constructor stub
+		System.out.println("I'm tmpClass....");
+		class2.fun(2);
+	}
+	public void  fun() {
+		System.out.println("i'm tmpClass's fun....");
+	}
+	public static void main(String[] args) {
+		//class2.fun(2);
+	}
+	static origenClass1 class2=new origenClass1(2);
+}
